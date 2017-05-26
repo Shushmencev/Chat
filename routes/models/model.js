@@ -17,22 +17,13 @@ var user_reg = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        unique: true,
-        required: true
-    },
     date: {
         type: Date,
         default: Date.now
-    },
-    isValid: {
-        type: Boolean,
-        default: false
     }
 });
 
-user_reg.methods.encryptPwd = function(pwd) {
+user_reg.methods.encryptPwd = function(pwd){
     return crypto.createHmac('sha1', pwd)
         .update(this.salt)
         .digest('hex');
@@ -61,17 +52,16 @@ exports.Register = mongoose.model('register', user_reg);
 
 
 // модель опроса пользователя
-var interview = new mongoose.Schema({
-    name: String,
-    PerDataQuest: {},
-    response: {},
+var message = new mongoose.Schema({
+    user_name: String,
+    text: String,
     date: {
         type: Date,
         default: Date.now
     }
 });
 
-interview.methods.interview_save = function() {
+message.methods.message_save = function() {
     this.save(function(err) {
         if (err) throw err;
 
@@ -79,4 +69,4 @@ interview.methods.interview_save = function() {
     });
 };
 
-exports.Interview = mongoose.model('interview', interview);
+exports.Message = mongoose.model('message', message);

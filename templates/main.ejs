@@ -61,8 +61,11 @@
                 contentType: "application/json",
                 success: function(data) {
                     console.log(data);
+                    document.getElementById("output_window").value += data.user_name + ": " + data.text + "\n";
                 },
             });
+
+            document.getElementById("input_window").value = "";
         }
 
         function logic(res) {
