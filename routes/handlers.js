@@ -9,7 +9,7 @@ exports.main = function(req, res, next) {
 
 exports.send = function(req, res, next) {
     // главная  , user: loadUser(req, res, next)
-    console.log(req.body.text);
+    //console.log(req.body.text);
 
     var dataMessage = new message({
         user_name: req.session.user,

@@ -47,13 +47,15 @@ app.use(function(err, req, res, next) {
 
 app.use('/', router);
 
-// Загрузка в базу вопросов
-if (conf.get('updatequest')) {
-    var q = require('./routes/models/loadQuestion')
-    q();
-}
-
-
 app.listen(conf.get('port'), function() {
     console.log("Сервер запущен:");
+});
+
+var io = require('socket.io').listen(app);
+
+io.sockets.on('connection', function (socket){
+    socket.on('message', function (text, cb){
+        socket.broadcast.emit('message', text);
+        cb(text);
+    })
 });

@@ -3,7 +3,9 @@
     <div align="center">
         <textarea id = "output_window" rows = "20" cols = "100"></textarea>
         <textarea id = "input_window" rows = "10" cols = "100" style = "margin-top: 10px"></textarea>
-        <p><input type="submit" value="Отправить" OnClick = "send();"></p>
+        <div align="center">
+            <input type="submit" value="Отправить" OnClick = "send();">
+        </div>
     </div>
 
     <script>
@@ -45,21 +47,31 @@
     </script>
 
     <script>
+        var socket = io.connect();
+
+        socket.emit('message', text, function(data){
+            document.getElementById("output_window").value += data.user_name + ": " + data.text + "\n";
+        });
+
         function send(){
             var text = document.getElementById("input_window").value;
             console.log(text);
-            $.ajax({
-                type: "POST",
-                url: "/",
-                data: JSON.stringify({
-                    text: text
-                }),
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    console.log(data);
-                    document.getElementById("output_window").value += data.user_name + ": " + data.text + "\n";
-                },
+            // $.ajax({
+            //     type: "POST",
+            //     url: "/",
+            //     data: JSON.stringify({
+            //         text: text
+            //     }),
+            //     dataType: "json",
+            //     contentType: "application/json",
+            //     success: function(data) {
+            //         console.log(data);
+            //         document.getElementById("output_window").value += data.user_name + ": " + data.text + "\n";
+            //     },
+            // });
+            window.user = "ulala";
+            socket.emit('message', [user_name: window.user, text: text], function(data){
+                document.getElementById("output_window").value += data.user_name + ": " + data.text + "\n";
             });
 
             document.getElementById("input_window").value = "";
