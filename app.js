@@ -45,17 +45,32 @@ app.use(function(err, req, res, next) {
 
 });
 
+
 app.use('/', router);
 
 app.listen(conf.get('port'), function() {
     console.log("Сервер запущен:");
 });
 
-var io = require('socket.io').listen(app);
+// var server = require('http').Server(app);
+// var io = require('socket.io').listen(8080);
 
-io.sockets.on('connection', function (socket){
-    socket.on('message', function (text, cb){
-        socket.broadcast.emit('message', text);
-        cb(text);
-    })
+
+
+// io.on('connection', function (socket){
+//     socket.on('message', function (text, cb){
+//         console.log(text)
+//         socket.broadcast.emit('message', text);
+//         cb(text);
+//     })
+// });
+
+var server = require('http').Server(app);
+var io = require('socket.io').listen(8080);
+
+io.on('connection', function (socket) {
+    //socket.emit('message', { hello: 'world' });
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
 });
