@@ -1,62 +1,111 @@
 <% layout('baza') %>
 
-    <div id="fullpage">
-        <div class="section " id="section0">
-            <div class="container">
-                <!--<div class="row vertical-center">-->
-                <div class="izob col-xs-12 col-sm-12 col-md-12">
-                    <img src="img/fullPage/PRIVET.png" alt="world" class="img-responsive">
-                    <h2>СИСТЕМА МОНИТОРИНГА ЭПИДЕМИОЛОГИЧЕСКИХ ХАРАКТЕРИСТИК</h2>
-                </div>
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="section " id="section1">
-            <div class="container">
-                <!--<div class="row vertical-center">-->
-                <div class="izob col-xs-5 col-sm-5 col-md-5">
-                    <img src="img/fullPage/world.png" alt="world" class="img-responsive">
-                </div>
-                <div class="tex col-xs-6 col-sm-6 col-md-6 text-center">
-                    <h2 style="color: #5C9AD8;">Интерактивная карта</h2>
-                    <p style="color: #5C9AD8;">Предоставляет развёрнутую статистическую информацию по 7 нозологиям, включая сортировку информации о распространённости определённых заболеваний в регионах Российской Федерации.</p>
-                    <a href="map">
-                        <button style="border-color: #5C9AD8; color: #5C9AD8;">Перейти</button>
-                    </a>
-                </div>
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="section" id="section2">
-            <div class="container">
-                <!--<div class="row vertical-center">-->
-                <div class="tex col-xs-6 col-sm-6 col-md-6 text-center" style="padding-left: 0px; padding-right: 70px;">
-                    <h2 style="color: #740B8E;">Медицинский опросник</h2>
-                    <p style="color: #740B8E;">Пожалуйста, заполните Ваши персональные данные и пройдите медицинский опрос по 7 нозологиям. Уверяем, это не займёт много времени!</p>
-                    <a href="interview">
-                        <button style="border-color: #740B8E; color: #740B8E;">Пройти</button>
-                    </a>
-                </div>
-                <div class="izob col-xs-5 col-sm-5 col-md-5">
-                    <img src="img/fullPage/opros.png" alt="world" class="img-responsive">
-                </div>
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="section" id="section3">
-            <div class="container">
-                <!--<div class="row vertical-center">-->
-                <div class="izob col-xs-5 col-sm-5 col-md-5">
-                    <img src="img/fullPage/diag.png" alt="world" class="img-responsive">
-                </div>
-                <div class="tex col-xs-6 col-sm-6 col-md-6 text-center">
-                    <h2>Анализ данных</h2>
-                    <p>Предоставляет пользователю статистическую информацию, отображённую в виде подробных графиков и диаграмм, составленных на основе обработанных анкетных данных.</p>
-                    <a href="charts">
-                        <button>Перейти</button>
-                    </a>
-                </div>
-                <!--</div>-->
-            </div>
-        </div>
+
+    <div>
+        <form>
+       <p>Введите IP-адрес:</p>
+       <p><input name="ip" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"></p>
+       <p><input type="submit" value="Отправить"></p>
+      </form>
     </div>
+
+    <script>
+        $("#PerDataQuest").submit(function(e) {
+            e.preventDefault();
+            var Form = document.forms["PerDataQuest"];
+            var okato = Form.elements["okato"].value;
+            var gender = Form.elements["gender"].value;
+            var age_group_id = Form.elements["age_group_id"].value;
+            var height_group_id = Form.elements["height_group_id"].value;
+            var weight_group_id = Form.elements["weight_group_id"].value;
+            var smok = Form.elements["smok"].value;
+
+            $.ajax({
+                type: "POST",
+                url: "/interview",
+                data: JSON.stringify({
+                    okato: okato,
+                    gender: gender,
+                    age_group_id: age_group_id,
+                    height_group_id: height_group_id,
+                    weight_group_id: weight_group_id,
+                    smok: smok
+                }),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                    window.questions = data.response;
+                    window.qnum = "q1";
+                    document.getElementById("gl1").style.display = 'none';
+                    document.getElementById("quest").style.display = '';
+                    document.getElementById("overlay").style.display = 'block';
+                    console.log(document.getElementById("overlay").style.display);
+                    document.getElementById("question").innerHTML = questions.q1;
+                },
+            });
+        });
+    </script>
+
+    <script>
+        function resQuest(res) {
+            window.questions[window.qnum] = res;
+
+            var next = logic(res); // возвращает номер(название) следующего вопроса
+            if (next == "qend") {
+                document.getElementById("quest").style.display = 'none';
+                document.getElementById("questFin").style.display = '';
+            }
+
+            window.qnum = next;
+            document.getElementById("question").innerHTML = window.questions[next];
+        }
+
+        function logic(res) {
+
+            if (window.qnum.indexOf("q1") != -1)
+                if (window.qnum == "q1")
+                    if (res == 1)
+                        return "q1_1";
+                    else return "q2";
+            else
+            if (window.qnum == "q1_1")
+                if (res == 1)
+                    return "q1_2"
+                else return "q2"
+            else return "q2"
+
+            if (window.qnum == "q2")
+                return "q3"
+
+            if (window.qnum == "q3")
+                return "q4"
+
+            if (window.qnum.indexOf("q4") != -1)
+                if (window.qnum == "q4")
+                    if (res == 0)
+                        return "q4_1"
+                    else return "qend"
+            else return "qend"
+        }
+
+        function resFin() {
+            console.log("отправка");
+
+            var res = {}
+            for (key in window.questions)
+                if (key.indexOf("q") != -1)
+                    res[key] = window.questions[key];
+
+            $.ajax({
+                type: "POST",
+                url: "/responses",
+                data: JSON.stringify(res),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    window.location = "/";
+                }
+            });
+        }
+    </script>
