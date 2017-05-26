@@ -1,0 +1,12 @@
+{
+    "port": 3000,
+    "mongoose": {
+        "url": "mongodb://localhost/epidem",
+        "options": {
+            "secret": "epidem gpo",
+            "key": "epi"
+        }
+    },
+    "updatequest": false,
+    "file_questions": "devQuest.json"
+}

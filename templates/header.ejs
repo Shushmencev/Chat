@@ -1,0 +1,78 @@
+<div class="header head_foot_color" style=" background-color:#717171">
+    <a href="/#firstPage" style="color:white; text-decoration: none;">
+        <div class="logo">
+            <img src="img/fullPage/PRIVETLOL.png">
+        </div>
+    </a>
+    <ul class="ca-menu">
+        <li style="width: 140px;">
+            <a href="interview">
+                <span class="ca-icon icon-pencil2"></span>
+                <div class="ca-content">
+                    <h2 class="ca-main">Опрос</h2>
+                </div>
+            </a>
+        </li>
+        <li style="width: 135px;">
+            <a href="map">
+                <span class="ca-icon icon-planet"></span>
+                <div class="ca-content">
+                    <h2 class="ca-main">Карта</h2>
+                </div>
+            </a>
+        </li>
+        <li style="width: 180px;">
+            <a href="charts">
+                <span class="ca-icon icon-pie-chart"></span>
+                <div class="ca-content">
+                    <h2 class="ca-main">Диаграммы</h2>
+                </div>
+            </a>
+        </li>
+        <li style="width: 150px;">
+            <a href="export_data">
+                <span class="ca-icon icon-upload2"></span>
+                <div class="ca-content">
+                    <h2 class="ca-main">Экспорт</h2>
+                </div>
+            </a>
+        </li>
+        <li style="width: 135px;">
+            <a href="charts">
+                <span class="ca-icon icon-stats-dots"></span>
+                <div class="ca-content">
+                    <h2 class="ca-main">Анализ</h2>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <% if (user) {%>
+        <div class="username_bar" title="<%= user.login %>">
+            <span class="ca-icon icon-user" style="margin-left: 50px; width: 40px; height: 60px; font-size: 26px;"></span>
+            <p style="margin-left: 90px; overflow: hidden;">
+                <%= user.login %>
+            </p>
+        </div>
+        <ul class="ca-menu" style="position: absolute; right: 0; top: 0;">
+            <li>
+                <a href="logout">
+                    <span class="ca-icon icon-key"></span>
+                    <div class="ca-content">
+                        <h2 class="ca-main">Выход</h2>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <% } else { %>
+            <ul class="ca-menu" style="position: absolute; right: 0; top: 0;">
+                <li>
+                    <a href="signin">
+                        <span class="ca-icon icon-key"></span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Вход</h2>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <% } %>
+</div>

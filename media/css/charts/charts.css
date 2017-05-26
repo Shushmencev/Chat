@@ -1,0 +1,26 @@
+#param {
+    display: inline-block;
+    float: right;
+    width: 480px;
+    height: 580px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    background: white;
+    border-color: #717171;
+    color: #717171;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    background-color: white;
+    border: #717171 solid 2px;
+    border-radius: 5px;
+}
+
+#param button:hover {
+    background-color: #717171;
+    color: white;
+}

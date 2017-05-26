@@ -1,0 +1,59 @@
+<% layout('baza') %>
+
+    <div style="padding: 10px;">
+        <h1 class="text-center">Регистрация</h1>
+        <hr>
+        <% if(err) {%>
+            <div class="error_block">
+                <%= err  %>
+            </div>
+            <%}%>
+
+                <form action="signup" method="post" id="signup" accept-charset="utf-8" class="regfield">
+                    <div class="form-group">
+                        <label class="control-label" for="signup_login">Логин: </label>
+                        <input required="true" class="form-control" onblur="validateName('signup_login')" onfocus="focusField('signup_login')" type="text" name="login" id="signup_login" placeholder="Введите Ваше имя">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="signup_email">E-mail: </label>
+                        <input required="true" class="form-control" type="text" onblur="validateEmail('signup_email')" onfocus="focusField('signup_email')" name="email" id="signup_email" placeholder="Введите Ваш e-mail">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="signup_pwd">Пароль: </label>
+                        <input required="true" class="form-control" type="password" onblur="validatePassword('signup_pwd')" onfocus="focusField('signup_pwd')" name="pwd" id="signup_pwd" placeholder="Придумайте пароль">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="signup_pwd_c">Подтверждение пароля: </label>
+                        <input required="true" class="form-control" type="password" onblur="validatePasswordC('signup_pwd_c','signup_pwd')" onfocus="focusField('signup_pwd_c')" name="pwd_c" id="signup_pwd_c" placeholder="Повторите пароль">
+                    </div>
+
+                    <div class="form-group center">
+                        <p><input class="btn btn-primary btn-lg" style="outline: none;" value="Зарегистрироваться" type="submit" id="submit"></p>
+                    </div>
+                </form>
+    </div>
+
+    <script>
+        $("#signup").submit(function(e) {
+            var Form = document.forms["signup"];
+            var login = Form.elements["login"].id;
+            var email = Form.elements["email"].id;
+            var pwd = Form.elements["pwd"].id;
+            var pwd_c = Form.elements["pwd_c"].id;
+
+            if (validateEmail(email)) {
+                if (validatePassword(pwd)) {
+                    if (validateName(login)) {
+                        if (validatePasswordC(pwd_c, pwd)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        });
+    </script>

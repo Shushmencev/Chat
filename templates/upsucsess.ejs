@@ -1,0 +1,21 @@
+<% layout('baza') %>
+
+<head>
+<title>Регистрация завершена</title>
+</head>
+
+<%  if(user){ %>
+        <% if(user.name){ %>
+           <%= username = user.name %>
+			<% } %>
+			<% else { %>
+            <% username = user.email %>
+        <% } %>
+    <% } %>
+
+
+    <div style="height: 100%">
+        <div class="error_block">
+            Поздравляем, <%= username %>, регистрация успешно завершена!
+        </div>
+    </div>

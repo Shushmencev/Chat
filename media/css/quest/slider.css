@@ -1,0 +1,110 @@
+.anythingSlider{ 
+    width: 700px; 
+    height: 500px; 
+    position: absolute; 
+    left: 50%;
+    top: 50%;
+    margin-left: -400px;
+    margin-top: -250px;
+    font-family: Roboto, medium, sans-serif;
+    border-radius: 50px;
+}
+.anythingSlider .wrapper { 
+    width: 700px; 
+    overflow: auto; 
+    height: 500px;
+    margin: 0 40px; 
+    position: absolute; 
+    top: 50px; 
+    left: 0; 
+    border-radius: 10px;
+}
+#start-stop{
+    visibility: hidden;
+}
+
+.anythingSlider .wrapper ul { 
+    width: 9999px; 
+    list-style: none; 
+    position: absolute; 
+    top: 0; 
+    left: 0px; 
+    right: 0px;
+    border-radius: 10px;
+    background-color: #B664CA;
+    margin: 0; 
+}
+.anythingSlider ul li { 
+    display: block; 
+    float: left; 
+    padding: 0; 
+    height: 317px; 
+    width: 700px; 
+    margin: 0; 
+    right: 7px;
+}
+.anythingSlider .arrow { 
+    visibility: hidden;
+    display: block;
+    height: 200px;
+    width: 67px; 
+    background: url(../images/strelki.png) no-repeat 0 0; 
+    text-indent: -9999px;
+    position: absolute; 
+    top: 150px;
+    cursor: pointer;
+}
+.anythingSlider .forward { 
+    visibility: hidden;
+    background-position: 0 0;
+    right: -40px; 
+}
+.anythingSlider .back { 
+    background-position: -67px 0;
+    left: -20px;
+}
+.anythingSlider .forward:hover { 
+    background-position: 0 -200px; 
+}
+.anythingSlider .back:hover { 
+    background-position: -67px -200px;
+} 
+#thumbNav { 
+    position: relative; 
+    top: 480px; 
+    text-align: center; 
+    left: 5%;
+    
+}
+#thumbNav a { 
+    color: #3D2452;
+    font: 15px; 
+    Georgia, Serif;
+    display: inline-block;
+    padding: 2px 8px; 
+    height: 18px; 
+    margin: 0 5px 0 0; 
+    text-align: center;
+    border-radius: 5px;
+}
+#thumbNav a:hover { 
+    background-image: none; 
+}
+#thumbNav a.cur { 
+    background: white;
+}
+
+.anythingSlider .wrapper ul ul {
+    position: static; 
+    margin: 0;
+    background: none; 
+    overflow: visible; 
+    width: auto; 
+    border: 0; 
+}
+.anythingSlider .wrapper ul ul li {
+    float: none; 
+    height: auto;
+    width: auto;
+    background: none; 
+}

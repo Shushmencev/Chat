@@ -1,0 +1,10 @@
+.idea
+.vscode
+.virtualenv
+logs/*
+*.pyc
+/logs
+*.sqlite3
+migrations/
+node_modules/
+cmd.bat

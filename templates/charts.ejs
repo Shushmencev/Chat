@@ -1,0 +1,116 @@
+<% layout('baza') %>
+
+
+    <h1 class="text-center"> Диаграммы </h1>
+    <hr>
+    <div id="charts" style="width: 800px; height: 600px; display: inline-block;"></div>
+    <div id="param" style="overflow: auto;">
+        <!--<form name="r">-->
+        <h4><b>Параметры выборки:</b></h4>
+        <hr>
+        <h5><b>Тип диаграммы:</b></h5>
+        <input name="r1" type="radio" value="Круговая" checked> Круговая
+        <input name="r1" type="radio" value="Линейная"> Линейная
+        <input name="r1" type="radio" value="Столбцовая"> Столбцовая
+        <hr>
+        <h5><b>Пол:</b></h5>
+        <input name="r2" type="radio" value="М" checked> М
+        <input name="r2" type="radio" value="Ж"> Ж
+        <input name="r2" type="radio" value="О"> Оба
+        <hr>
+        <h5><b>Употребление табачных изделий:</b></h5>
+        <input name="r3" type="radio" value="Н" checked> Нет
+        <input name="r3" type="radio" value="Д"> Да
+        <input name="r3" type="radio" value="O"> Оба
+        <hr>
+        <h5><b>Только диагноз </b></h5>
+        <input name="r4" type="checkbox" value="Д">
+        <hr>
+        <h5><b>Диагнозы:</b></h5>
+        <select name="r5" style="width: 210px;">
+            <option value="0" selected>Все варианты</option>  
+            <option value="1">Ревматоидный артрит
+            <option value="2">Болезни глаз
+            <option value="3">Аритмия
+            <option value="4">Артериальная гипертензия
+            <option value="5">Болезни органов дыхания
+            <option value="6">Болезни почек
+            <option value="7">Сколиоз     
+        </select>
+        <hr>
+        <h5><b>Рост:</b></h5>
+        <select name="r6" style="width: 210px;">
+            <option value="0" selected>Все варианты</option>  
+            <option value="1">1-10
+            <option value="2">10-20
+            <option value="3">20-30
+            <option value="4">30-50    
+        </select>
+        <hr>
+        <center>
+            <button id="butUpdate" onclick="update();">Показать</button>
+        </center>
+        <br>
+
+    </div>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
+
+            var options = {
+                title: 'Данные'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('charts'));
+
+            chart.draw(data, options);
+        }
+
+        function update() {
+            var r1 = $('input[name=r1]:checked').val();
+            var r2 = $('input[name=r2]:checked').val();
+            var r3 = $('input[name=r3]:checked').val();
+            var r4 = $('input[name=r4]:checked').val();
+            // var r5 = $('input[name=r5]').val();
+            console.log(r1);
+            console.log(r2);
+            console.log(r3);
+            console.log(r4);
+            console.log(r5);
+
+            $.ajax({
+                type: "POST",
+                url: "/charts",
+                data: JSON.stringify({
+                    r1: r1,
+                    r2: r2,
+                    r3: r3,
+                    r4: r4,
+                    r5: r5
+                }),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+
+                },
+            });
+        }
+    </script>

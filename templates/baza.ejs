@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+<%- partial('res') %>
+  </head>
+  <body class="appbody">
+<%- partial('header') %>
+    <div class="main_container">
+<%- body %>
+    </div>
+    <footer>
+    	<% if (title != 'Главная') { %>
+<%- partial('footer') %>
+        <% } %>        
+	</footer>
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<% layout('baza') %>
+
+
+    <div class="osn">
+        <div style="background-color: #B664CA; margin: auto; border-radius: 10px;">
+            <div id="gl1">
+                <br>
+                <center><b><p class="naz"> Перед тем как перейти к опросу, заполните необходимые поля:</p></b></center>
+                <br><br><br>
+                <form action="interview" method="post" accept-charset="utf-8" name="PerDataQuest" id="PerDataQuest">
+                    <div class="vubor">
+                        <label id="label1"> Место проживания :</label>
+                        <select required name="okato">
+                                <option  value="">Выберите...</option>
+                                    <option value="1">Алтайский край</option>
+                                    <option value="10">Амурская область</option>
+                                    <option value="11">Архангельская область</option>
+                                    <option value="12">Астраханская область</option>
+                                    <option value="14">Белгородская область</option>
+                                    <option value="15">Брянская область</option>
+                                    <option value="17">Владимирская область</option>
+                                    <option value="18">Волгоградская область</option>
+                                    <option value="19">Вологодская область</option>
+                                    <option value="20">Воронежская область</option>
+                                    <option value="99">Еврейская автономная область</option>
+                                    <option value="76">Забайкальский край</option>
+                                    <option value="24">Ивановская область</option>
+                                    <option value="25">Иркутская область</option>
+                                    <option value="83">Кабардино-Балкарская Республика</option>
+                                    <option value="27">Калининградская область</option>
+                                    <option value="29">Калужская область</option>
+                                    <option value="30">Камчатский край</option>
+                                    <option value="91">Карачаево-Черкесская Республика</option>
+                                    <option value="32">Кемеровская область</option>
+                                    <option value="33">Кировская область</option>
+                                    <option value="34">Костромская область</option>
+                                    <option value="3">Краснодарский край</option>
+                                    <option value="4">Красноярский край</option>
+                                    <option value="37">Курганская область</option>
+                                    <option value="38">	Курская область</option>
+                                    <option value="41">Ленинградская область</option>
+                                    <option value="42">Липецкая область</option>
+                                    <option value="44">Магаданская область</option>
+                                    <option value="46">Московская область</option>
+                                    <option value="47">Мурманская область</option>
+                                    <option value="111">Ненецкий автономный округ</option>
+                                    <option value="22">Нижегородская область</option>
+                                    <option value="49">Новгородская область</option>
+                                    <option value="50">Новосибирская область</option>
+                                    <option value="52">Омская область</option>
+                                    <option value="53">Оренбургская область</option>
+                                    <option value="54">Орловская область</option>
+                                    <option value="56">Пензенская область</option>
+                                    <option value="57">Пермский край</option>
+                                    <option value="5">Приморский край</option>
+                                    <option value="58">Псковская область</option>
+                                    <option value="79">Республика Адыгея (Адыгея)</option>
+                                    <option value="84">Республика Алтай</option>
+                                    <option value="80">Республика Башкортостан</option>
+                                    <option value="81">Республика Бурятия</option>
+                                    <option value="82">Республика Дагестан</option>
+                                    <option value="26">Республика Ингушетия</option>
+                                    <option value="85">Республика Калмыкия</option>
+                                    <option value="86">Республика Карелия</option>
+                                    <option value="87">Республика Коми</option>
+                                    <option value="35">Республика Крым</option>
+                                    <option value="88">Республика Марий Эл</option>
+                                    <option value="89">Республика Мордовия</option>
+                                    <option value="98">Республика Саха (Якутия)</option>
+                                    <option value="90">Республика Северная Осетия-Алания</option>
+                                    <option value="92">Республика Татарстан (Татарстан)</option>
+                                    <option value="93">Республика Тыва</option>
+                                    <option value="95">Республика Хакасия</option>
+                                    <option value="60">Ростовская область</option>
+                                    <option value="61">Рязанская область</option>
+                                    <option value="36">Самарская область</option>
+                                    <option value="63">Саратовская область</option>
+                                    <option value="64">Сахалинская область</option>
+                                    <option value="65">Свердловская область</option>
+                                    <option value="66">Смоленская область</option>
+                                    <option value="7">Ставропольский край</option>
+                                    <option value="68">	Тамбовская область</option>
+                                    <option value="28">Тверская область</option>
+                                    <option value="69">Томская область</option>
+                                    <option value="70">Тульская область</option>
+                                    <option value="71">Тюменская область</option>
+                                    <option value="94">Удмуртская Республика</option>
+                                    <option value="73">Ульяновская область</option>
+                                    <option value="8">Хабаровский край</option>
+                                    <option value="71131">Ханты-мансийский автономный округ</option>
+                                    <option value="75">Челябинская область</option>
+                                    <option value="96">Чеченская Республика</option>
+                                    <option value="97">Чувашская Республика - Чувашия</option>
+                                    <option value="77">Чукотский автономный округ</option>
+                                    <option value="71140">Ямало-ненецкий автономный округ</option>
+                                    <option value="78">Ярославская область</option>    						
+                                    </select>
+                    </div>
+                    <div class="vubor">
+                        <label id="label1">Возраст :</label>
+                        <select name="age_group_id" required>
+                            <option value="">Выберите...</option>  
+                            <option value="0">15-25</option>
+                            <option value="1">26-35</option>
+                            <option value="2">36-45</option>
+                            <option value="3">46-55</option>
+                            <option value="4">56-65</option>
+                            <option value="5">66-75</option>
+                            <option value="7">76-85</option>
+                            <option value="8">старше 85</option>       
+                        </select>
+                    </div>
+                    <div class="vubor">
+                        <label id="label1">Пол :</label>
+                        <div class="vubor" style="width: 450px; padding-left: 90px; padding-right: 90px;">
+                            <div class="radioblock">
+                                <input required type="radio" class="radio1" name="gender" id="men" value="men">
+                                <label for="men" class="pd">Мужской</label>
+                            </div>
+                            <div class="radioblock">
+                                <input required type="radio" class="radio1" name="gender" id="wom" value="wom">
+                                <label for="wom" class="pd">Женский</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="vubor">
+                        <label id="label1">Рост :</label>
+                        <select required name="height_group_id">
+    						<option  value="" >Выберите...</option>  
+                            <option value='false'>ниже 140 см</option>
+                            <option value='false'>140-145 см</option>
+                            <option value='false'>146-150 см</option>
+                            <option value='false'>151-155 см</option>
+                            <option value='false'>156-160 см</option>
+                            <option value='false'>161-165 см</option>
+                            <option value='false'>166-170 см</option>
+                            <option value='false'>171-175 см</option>
+                            <option value="8">176-180 см</option>
+                            <option value='false'>181-185 см</option>
+                            <option value='false'>186-190 см</option>
+                            <option value='false'>выше 190 см</option>       
+                        </select>
+                    </div>
+                    <div class="vubor">
+                        <label id="label1">Вес :</label>
+                        <select required="" name="weight_group_id">
+    						<option  value="">Выберите...</option>  
+                            <option value='false'>ниже 30 кг</option>
+                            <option value='false'>30-35 кг</option>
+                            <option value='false'>36-40 кг</option>
+                            <option value='false'>41-45 кг</option>
+                            <option value='false'>46-50 кг</option>
+                            <option value='false'>51-55 кг</option>
+                            <option value='false'>56-60 кг</option>
+                            <option value='false'>61-65 кг</option>
+                            <option value='false'>66-70 кг</option>
+                            <option value='false'>71-75 кг</option>
+                            <option value='false'>76-80 кг</option>
+                            <option value='false'>81-85 кг</option>
+                            <option value='false'>86-90 кг</option>
+                            <option value='false'>больше 90 кг</option>  
+    					</select>
+                    </div>
+                    <div class="vubor">
+                        <label id="label1">Употребление табачных изделий :</label>
+                        <div class="vubor" style="width: 450px; padding-left: 90px; padding-right: 90px;">
+                            <div class="radioblock">
+                                <input required type="radio" name="smok" class="radio1" id="smok">
+                                <label for="smok" class="pd">Курю</label>
+                            </div>
+                            <div class="radioblock">
+                                <input required type="radio" name="smok" class="radio1" id="nosmok">
+                                <label for="nosmok" class="pd">Не курю</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vubor">
+                        <label id="label1">Социальное положение :</label>
+                        <select name="id_social_status" required>
+                            <option value="">Выберите...</option>  
+                            <option value="0">Учащийся школы</option>
+                            <option value="1">Студент</option>
+                            <option value="2">Неработающий</option>
+                            <option value="3">Безработный</option>
+                            <option value="4">Работающий</option>
+                            <option value="5">Пенсионер</option>  
+                        </select>
+                    </div>
+
+
+                    <center>
+                        <input type="submit" id="OK" value="Начать!">
+                    </center>
+                </form>
+            </div>
+            <div class="wrapperQuestion" style="display: none;" id="quest">
+                <p class="ca-mainQuestion questions" id="question"></p>
+                <div class=centerButtons>
+                    <button class="buttonsQuestion" class="buttonsQuestions" type="submit" onclick="resQuest(1)"> Да </button>
+                    <button class="buttonsQuestion" class="buttonsQuestions" type="submit" onclick="resQuest(0)"> Нет </button>
+                </div>
+            </div>
+            <div class="wrapperQuestion" style="display: none;" id="questFin">
+                <p class="ca-mainQuestion questions">Спасибо, что приняли участие в опросе!</p>
+                <button class="buttonsQuestion buttonsQuestions finishbut" type="submit" onclick="resFin()"> Завершить опрос</button>
+            </div>
+            <div id="overlay" style="display: none;">
+                <div class="popup">
+                    <h2>Внимание!</h2>
+                    <p> Пожалуйста, отвечайте на вопросы честно! </p>
+                    <button class="close" title="OK" onclick="document.getElementById('overlay').style.display='none';"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#PerDataQuest").submit(function(e) {
+            e.preventDefault();
+            var Form = document.forms["PerDataQuest"];
+            var okato = Form.elements["okato"].value;
+            var gender = Form.elements["gender"].value;
+            var age_group_id = Form.elements["age_group_id"].value;
+            var height_group_id = Form.elements["height_group_id"].value;
+            var weight_group_id = Form.elements["weight_group_id"].value;
+            var smok = Form.elements["smok"].value;
+
+            $.ajax({
+                type: "POST",
+                url: "/interview",
+                data: JSON.stringify({
+                    okato: okato,
+                    gender: gender,
+                    age_group_id: age_group_id,
+                    height_group_id: height_group_id,
+                    weight_group_id: weight_group_id,
+                    smok: smok
+                }),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                    window.questions = data.response;
+                    window.qnum = "q1";
+                    document.getElementById("gl1").style.display = 'none';
+                    document.getElementById("quest").style.display = '';
+                    document.getElementById("overlay").style.display = 'block';
+                    console.log(document.getElementById("overlay").style.display);
+                    document.getElementById("question").innerHTML = questions.q1;
+                },
+            });
+        });
+    </script>
+
+    <script>
+        function resQuest(res) {
+            window.questions[window.qnum] = res;
+
+            var next = logic(res); // возвращает номер(название) следующего вопроса
+            if (next == "qend") {
+                document.getElementById("quest").style.display = 'none';
+                document.getElementById("questFin").style.display = '';
+            }
+
+            window.qnum = next;
+            document.getElementById("question").innerHTML = window.questions[next];
+        }
+
+        function logic(res) {
+
+            if (window.qnum.indexOf("q1") != -1)
+                if (window.qnum == "q1")
+                    if (res == 1)
+                        return "q1_1";
+                    else return "q2";
+            else
+            if (window.qnum == "q1_1")
+                if (res == 1)
+                    return "q1_2"
+                else return "q2"
+            else return "q2"
+
+            if (window.qnum == "q2")
+                return "q3"
+
+            if (window.qnum == "q3")
+                return "q4"
+
+            if (window.qnum.indexOf("q4") != -1)
+                if (window.qnum == "q4")
+                    if (res == 0)
+                        return "q4_1"
+                    else return "qend"
+            else return "qend"
+        }
+
+        function resFin() {
+            console.log("отправка");
+
+            var res = {}
+            for (key in window.questions)
+                if (key.indexOf("q") != -1)
+                    res[key] = window.questions[key];
+
+            $.ajax({
+                type: "POST",
+                url: "/responses",
+                data: JSON.stringify(res),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    window.location = "/";
+                }
+            });
+        }
+    </script>
