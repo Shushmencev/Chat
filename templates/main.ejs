@@ -1,17 +1,21 @@
 <% layout('baza') %>
 
     <div align="center">
-        <textarea id = "output_window" rows = "20" cols = "100"></textarea>
-        <textarea id = "input_window" rows = "10" cols = "100" style = "margin-top: 10px"></textarea>
+        <textarea id = "output_window" rows = "20" cols = "90"></textarea>
+    </div>
 
-        <div align="center">
-            <input type="submit" value="Отправить" OnClick = "send();">
-        </div>
+    <div align="center">
+        <textarea id = "input_window" rows = "10" cols = "90" style = "margin-top: 10px" 
+        onkeypress="if((event.ctrlKey && event.keyCode==13))send.click;"></textarea>
+    </div>
+
+    <div align="center">
+        <input type="submit" value="Отправить" OnClick = "send();">
     </div>
 
     <script>
 
-        var socket = io.connect('http://localhost:8080');
+        var socket = io.connect('http://109.227.222.114:8080');
         socket.on('message', function (data) {
                 document.getElementById("output_window").value += "Message:  " + data.text + "\n";
             });

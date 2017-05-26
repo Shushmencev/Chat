@@ -65,12 +65,20 @@ app.listen(conf.get('port'), function() {
 //     })
 // });
 
+var message = require('./routes/models/model').Message;
 var server = require('http').Server(app);
 var io = require('socket.io').listen(8080);
 
 io.on('connection', function (socket) {
     socket.on('my other event', function (data, cb) {
         //console.log(data);
+        var dataMessage = new message({
+            user_name: "User",
+            text: data.text
+        });
+
+        dataMessage.message_save();
+
         socket.broadcast.emit('message', data);
         cb(data);
     });
