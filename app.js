@@ -69,8 +69,9 @@ var server = require('http').Server(app);
 var io = require('socket.io').listen(8080);
 
 io.on('connection', function (socket) {
-    //socket.emit('message', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
+    socket.on('my other event', function (data, cb) {
+        //console.log(data);
+        socket.broadcast.emit('message', data);
+        cb(data);
     });
 });

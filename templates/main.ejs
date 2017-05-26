@@ -9,13 +9,19 @@
         </div>
     </div>
 
-    <script>       
+    <script>
+
+        var socket = io.connect('http://localhost:8080');
+        socket.on('message', function (data) {
+                document.getElementById("output_window").value += "Message:  " + data.text + "\n";
+            });
 
         function send(){
-            var socket = io.connect('http://localhost:8080');
-                socket.on('message', function (data) {
-                console.log(data);
-                socket.emit('my other event', { my: 'data' });
+            var text = document.getElementById("input_window").value;
+            
+            socket.emit('my other event', { text: text }, function(data){
+                //console.log(data);
+                document.getElementById("output_window").value += "My_message:  " + data.text + "\n";
             });
 
             // var socket = io.connect("http://127.0.0.1:8080");
