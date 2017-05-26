@@ -6,46 +6,46 @@
     <div align="center">
         <textarea id = "output_window" rows = "20" cols = "100"></textarea>
         <textarea id = "input_window" rows = "10" cols = "100" style = "margin-top: 10px"></textarea>
-        <p><input type="submit" value="Отправить" onClick = "send"></p>
+        <p><input type="submit" value="Отправить" OnClick = "send();"></p>
     </div>
 
-    <script>
-        $("#PerDataQuest").submit(function(e) {
-            e.preventDefault();
-            var Form = document.forms["PerDataQuest"];
-            var okato = Form.elements["okato"].value;
-            var gender = Form.elements["gender"].value;
-            var age_group_id = Form.elements["age_group_id"].value;
-            var height_group_id = Form.elements["height_group_id"].value;
-            var weight_group_id = Form.elements["weight_group_id"].value;
-            var smok = Form.elements["smok"].value;
+    // <script>
+    //     $("#PerDataQuest").submit(function(e) {
+    //         e.preventDefault();
+    //         var Form = document.forms["PerDataQuest"];
+    //         var okato = Form.elements["okato"].value;
+    //         var gender = Form.elements["gender"].value;
+    //         var age_group_id = Form.elements["age_group_id"].value;
+    //         var height_group_id = Form.elements["height_group_id"].value;
+    //         var weight_group_id = Form.elements["weight_group_id"].value;
+    //         var smok = Form.elements["smok"].value;
 
-            $.ajax({
-                type: "POST",
-                url: "/interview",
-                data: JSON.stringify({
-                    okato: okato,
-                    gender: gender,
-                    age_group_id: age_group_id,
-                    height_group_id: height_group_id,
-                    weight_group_id: weight_group_id,
-                    smok: smok
-                }),
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    console.log(data);
-                    window.questions = data.response;
-                    window.qnum = "q1";
-                    document.getElementById("gl1").style.display = 'none';
-                    document.getElementById("quest").style.display = '';
-                    document.getElementById("overlay").style.display = 'block';
-                    console.log(document.getElementById("overlay").style.display);
-                    document.getElementById("question").innerHTML = questions.q1;
-                },
-            });
-        });
-    </script>
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "/interview",
+    //             data: JSON.stringify({
+    //                 okato: okato,
+    //                 gender: gender,
+    //                 age_group_id: age_group_id,
+    //                 height_group_id: height_group_id,
+    //                 weight_group_id: weight_group_id,
+    //                 smok: smok
+    //             }),
+    //             dataType: "json",
+    //             contentType: "application/json",
+    //             success: function(data) {
+    //                 console.log(data);
+    //                 window.questions = data.response;
+    //                 window.qnum = "q1";
+    //                 document.getElementById("gl1").style.display = 'none';
+    //                 document.getElementById("quest").style.display = '';
+    //                 document.getElementById("overlay").style.display = 'block';
+    //                 console.log(document.getElementById("overlay").style.display);
+    //                 document.getElementById("question").innerHTML = questions.q1;
+    //             },
+    //         });
+    //     });
+    // </script>
 
     <script>
         function send(){
