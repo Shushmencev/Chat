@@ -1,17 +1,62 @@
+<!--HTML документ-->
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="css\style.css">
+    <meta charset = "utf-8" />
     <title><%= title %></title>
-<%- partial('res') %>
+    <%- partial('res') %>
   </head>
-  <body class="appbody">
-    <div class="main_container">
-<%- body %>
-    </div>
-    <footer>
-    	<% if (title != 'Главная') { %>
-<%- partial('footer') %>
-        <% } %>        
-	</footer>
+  <body>
+    <header>
+      <p>
+        Сайт Сибирской дружины, рассказывающий о правильном образе жизни
+      </p>
+      <nav>
+        <ul>
+          <li>
+            <a href = "">Общий чат</a>
+          </li>
+          <li>
+            <a href = "">Чат 1</a>
+          </li>
+          <li>
+            <a href = "">Чат 2</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--Название статьи-->
+    <article>
+      <h1>
+        Новости дружины
+      </h1>
+      
+      <!--Секция 1-->
+      <section>
+        <h2>
+          <%- body %>
+          Новость 1
+        </h2>
+        <p>
+          Здесь будут новости
+        </p>
+      </section>
+        
+      <!--Секция 1-->
+      <section>
+        <h2>
+          Новость 2
+        </h2>
+        <p>
+          Здесь будут новости
+        </p>
+      </section>
+          
+    </article>
+    <footer> 
+      Сайт разработан Сибирской дружиной
+    </footer>
   </body>
 </html>

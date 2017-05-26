@@ -1,0 +1,35 @@
+header p{
+	background-color: #A65F00;
+	color:black;
+	text-align: center;
+	font-family: Verdana,sans-serif;
+}
+
+header li{
+	text-align: left;
+	
+}
+
+a{color: black}
+a:hover{color: green}
+
+body{
+	width: 100%;
+/*	background-image: url('1.jpg'); */
+	background-color: #BF8230;
+	text-align: left;
+	font-family: Verdana,sans-serif;
+}
+
+footer{
+    bottom: 0;
+	width: 100%;
+	background-color: #A65F00;
+	text-align: center;
+	font-family: Verdana,sans-serif;	
+}
+
+article {
+	text-align: center;
+	font-family: Verdana,sans-serif;
+}
