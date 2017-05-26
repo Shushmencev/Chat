@@ -7,6 +7,12 @@ exports.main = function(req, res, next) {
     res.render('main', { title: 'Главная' });
 };
 
+exports.send = function(req, res, next) {
+    // главная  , user: loadUser(req, res, next)
+    console.log(req.body.text);
+    res.json("ok");
+};
+
 exports.getSignin = function(req, res) {
     // страница войти
     res.render('signin', { title: 'Вход', err: false });

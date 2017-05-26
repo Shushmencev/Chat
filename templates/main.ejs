@@ -1,12 +1,12 @@
 <% layout('baza') %>
 
+    <h1 align="center">Чат</h1>
 
-    <div>
-        <form>
-       <p>Введите IP-адрес:</p>
-       <p><input name="ip" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"></p>
-       <p><input type="submit" value="Отправить"></p>
-      </form>
+
+    <div align="center">
+        <textarea id = "output_window" rows = "20" cols = "100"></textarea>
+        <textarea id = "input_window" rows = "10" cols = "100" style = "margin-top: 10px"></textarea>
+        <p><input type="submit" value="Отправить" onClick = "send"></p>
     </div>
 
     <script>
@@ -48,17 +48,21 @@
     </script>
 
     <script>
-        function resQuest(res) {
-            window.questions[window.qnum] = res;
-
-            var next = logic(res); // возвращает номер(название) следующего вопроса
-            if (next == "qend") {
-                document.getElementById("quest").style.display = 'none';
-                document.getElementById("questFin").style.display = '';
-            }
-
-            window.qnum = next;
-            document.getElementById("question").innerHTML = window.questions[next];
+        function send(){
+            var text = document.getElementById("input_window").value;
+            console.log(text);
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: JSON.stringify({
+                    text: text
+                }),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(data) {
+                    console.log(data);
+                },
+            });
         }
 
         function logic(res) {
