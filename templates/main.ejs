@@ -5,12 +5,11 @@
     </div>
 
     <div align="center">
-        <textarea id = "input_window" style = "margin-top: 10px; height: 150px; width: 95%;"
-        onkeypress="if(event.keyCode==10||(event.ctrlKey && event.keyCode==13))send();" autofocus></textarea>
-    </div>
-
-    <div align="center">
-        <input id="koment" type="submit" value="Отправить" OnClick = "send();">
+        <textarea 
+        id = "input_window"
+        style = "margin-top: 10px; height: 150px; width: 95%;"
+        onkeypress="if(event.keyCode==10||(event.ctrlKey && event.keyCode==13)){send()} else if(event.keyCode==46){clear()};"
+        autofocus></textarea>
     </div>
 
     <script>
@@ -19,6 +18,11 @@
         socket.on('message', function (data) {
                 document.getElementById("output_window").value += "Message:     " + data.text + "\n";
             });
+
+        function clear(){
+
+            document.getElementById("output_window").value = "";
+        }
 
         function send(){
             var text = document.getElementById("input_window").value;
